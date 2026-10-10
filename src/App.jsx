@@ -10,48 +10,14 @@ export default function App() {
 
   return (
     <div className="app-shell">
-      <aside className="sidebar">
-        <a href="#main" className="brand">
-          <span className="brand-symbol" aria-hidden="true">
-            ✳
-          </span>{" "}
-          claridad<span className="brand-dot">.</span>
-        </a>
-        <p className="sidebar-caption">MENOS RUIDO. MÁS ESPACIO.</p>
-        <nav aria-label="Secciones">
-          <a href="#tasks-title">
-            <span aria-hidden="true">☑</span> Mis tareas
-          </a>
-          <a href="#notes-title">
-            <span aria-hidden="true">▤</span> Mi cuaderno
-          </a>
-        </nav>
-        <div className="sidebar-message">
-          <span aria-hidden="true">✧</span>
-          <p>No necesitas hacerlo todo hoy.</p>
-          <small>Solo el siguiente paso.</small>
-        </div>
-        <p className="local-label">
-          <span aria-hidden="true">●</span> Tu espacio personal
-        </p>
+      <aside className="notes-sidebar" aria-label="Cuaderno de notas">
+        <NotesPanel notes={notebook.notes} dispatch={dispatch} />
       </aside>
-      <main id="main">
-        <header className="page-header">
-          <span className="eyebrow">TU DÍA, A TU RITMO</span>
-          <span
-            className={`storage-badge ${storageError ? "has-error" : ""}`}
-            role="status"
-          >
-            {storageError ? "Guardado pendiente" : "Guardado en este navegador"}
-          </span>
-        </header>
+      <main id="main" className="main-content">
         <div className="hero">
           <h1>
-            Haz espacio para
-            <br />
-            <em>lo que importa.</em>
+            Organización de <em>notas y tareas</em> para proyectos.
           </h1>
-          <p>Organiza tus pendientes. Dale un lugar a tus ideas.</p>
           <span className="hero-art" aria-hidden="true">
             ✳
           </span>
@@ -93,14 +59,7 @@ export default function App() {
             />
           </div>
         </div>
-        <div className="workspace">
-          <TaskBoard tasks={notebook.tasks} dispatch={dispatch} />
-          <NotesPanel notes={notebook.notes} dispatch={dispatch} />
-        </div>
-        <footer>
-          Hecho para ir paso a paso.{" "}
-          <span>Los cambios en tareas se guardan automáticamente.</span>
-        </footer>
+        <TaskBoard tasks={notebook.tasks} dispatch={dispatch} />
       </main>
     </div>
   );

@@ -2,6 +2,7 @@ import { useState } from "react";
 import AddItemForm from "./addItemForm";
 import TaskCard from "./taskCard";
 import { useReorder } from "../hooks/useReorder";
+import "../styles/tasks.css";
 
 export default function TaskBoard({ tasks, dispatch }) {
   const [announcement, setAnnouncement] = useState("");

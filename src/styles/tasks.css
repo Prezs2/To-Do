@@ -1,0 +1,200 @@
+/* Tareas, subtareas, edición y reordenación. */
+.tasks-section h2 {
+  margin: 6px 0 8px;
+}
+.tasks-section > .section-description {
+  margin-bottom: 16px;
+}
+input[type="checkbox"] {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  accent-color: var(--green);
+  cursor: pointer;
+}
+.icon-button {
+  border: 1px solid #e1e6dc;
+  border-radius: 6px;
+  background: #f7f9f4;
+  color: var(--green);
+  padding: 3px 6px;
+  font-size: 14px;
+}
+.move-controls {
+  display: flex;
+  gap: 3px;
+  flex-shrink: 0;
+}
+.add-form {
+  display: flex;
+  gap: 8px;
+}
+.add-form input {
+  font-size: 13px;
+}
+.order-hint {
+  font-size: 10px;
+  color: var(--muted);
+  margin: 10px 0 14px;
+}
+.inline-editor {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex: 1;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+.inline-editor input {
+  flex: 1 1 120px;
+  font-size: 13px;
+  padding: 7px;
+}
+.editable-title {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  flex: 1;
+  min-width: 0;
+}
+.editable-title > span {
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  font-weight: 550;
+}
+.task-list {
+  display: grid;
+  gap: 12px;
+}
+.task-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 17px 16px 12px;
+  box-shadow: 0 3px 12px #253b3303;
+}
+.task-top {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+.drag-handle {
+  color: #8c9b83;
+  cursor: grab;
+  font-size: 21px;
+  user-select: none;
+}
+.drag-handle:active {
+  cursor: grabbing;
+}
+.task-card.completed > .task-top .editable-title > span,
+.subtask.completed .editable-title > span {
+  text-decoration: line-through;
+  color: #74816e;
+}
+.task-meta {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--muted);
+  font-size: 10px;
+  margin: 12px 0 14px 36px;
+}
+.pill {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 4px 7px;
+  background: #f6f0dc;
+  color: #846321;
+}
+.pill.done {
+  background: #e5efdf;
+  color: #506c43;
+}
+.task-details {
+  border-top: 1px solid #edf0e8;
+  padding-top: 10px;
+}
+.task-details > summary {
+  cursor: pointer;
+  font-size: 11px;
+  color: var(--muted);
+  padding: 2px 0 4px 5px;
+}
+.task-details > summary span {
+  margin-left: 4px;
+}
+.subtasks {
+  padding-top: 9px;
+}
+.subtask-list {
+  display: grid;
+  gap: 8px;
+}
+.subtask {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 8px;
+  border-radius: 8px;
+  background: #f7f9f4;
+  border: 1px solid transparent;
+}
+.subtask .editable-title > span {
+  font-weight: 400;
+  font-size: 12px;
+}
+.compact {
+  margin-top: 13px;
+}
+.compact input {
+  padding: 9px 10px;
+  font-size: 11px;
+}
+.tasks-section [data-dragging="true"] {
+  opacity: 0.5;
+}
+.tasks-section [data-over="true"] {
+  border-color: #5d8052;
+  box-shadow: 0 0 0 2px #c6d9ba;
+}
+@media (max-width: 700px) {
+  .task-card {
+    padding: 14px 12px 10px;
+  }
+  .task-top,
+  .subtask {
+    gap: 7px;
+  }
+  .editable-title {
+    flex-basis: calc(100% - 70px);
+    flex-wrap: wrap;
+    gap: 2px 8px;
+  }
+  .task-top > .move-controls {
+    margin-left: 37px;
+  }
+  .subtask > .move-controls {
+    margin-left: 34px;
+  }
+  .icon-button {
+    min-width: 34px;
+    min-height: 34px;
+  }
+  .task-meta {
+    margin-left: 36px;
+  }
+  .add-form {
+    flex-wrap: wrap;
+  }
+  .add-form input {
+    flex: 1 1 180px;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .icon-button {
+    transition: background-color 0.15s;
+  }
+}

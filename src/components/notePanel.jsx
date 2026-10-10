@@ -1,5 +1,6 @@
 import { useState } from "react";
 import NoteEditor from "./noteEditor";
+import "../styles/notes.css";
 
 export default function NotesPanel({ notes, dispatch }) {
   const [creating, setCreating] = useState(false);
