@@ -1,9 +1,13 @@
-import { useLocalStorage } from './useLocalStorage';
-import { STORAGE_KEY, createInitialData, isNotebook } from '../domain/data';
-import { notebookReducer } from '../domain/notebookReducer';
+import { useLocalStorage } from "./useLocalStorage";
+import { STORAGE_KEY, createInitialData, isNotebook } from "../domain/data";
+import { notebookReducer } from "../domain/notebookReducer";
 
 export function useNotebook() {
-  const { value, setValue, error, retrySave } = useLocalStorage(STORAGE_KEY, createInitialData, isNotebook);
+  const { value, setValue, error, retrySave } = useLocalStorage(
+    STORAGE_KEY,
+    createInitialData,
+    isNotebook,
+  );
 
   function dispatch(action) {
     // Usamos el estado más reciente, aunque haya varias actualizaciones seguidas.

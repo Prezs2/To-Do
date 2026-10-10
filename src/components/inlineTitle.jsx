@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 export default function InlineTitle({ title, onSave }) {
   const [editing, setEditing] = useState(false);
@@ -11,21 +11,47 @@ export default function InlineTitle({ title, onSave }) {
     setEditing(false);
   }
 
-  if (editing) return (
-    <form className="inline-editor" onSubmit={submit}>
-      <input aria-label="Nuevo título" value={draft} maxLength={160} required autoFocus
-        onChange={(event) => setDraft(event.target.value)}
-        onKeyDown={(event) => { if (event.key === 'Escape') setEditing(false); }} />
-      <button className="text-button" type="submit" disabled={!draft.trim()}>Guardar</button>
-      <button className="text-button" type="button" onClick={() => setEditing(false)}>Cancelar</button>
-    </form>
-  );
+  if (editing)
+    return (
+      <form className="inline-editor" onSubmit={submit}>
+        <input
+          aria-label="Nuevo título"
+          value={draft}
+          maxLength={160}
+          required
+          autoFocus
+          onChange={(event) => setDraft(event.target.value)}
+          onKeyDown={(event) => {
+            if (event.key === "Escape") setEditing(false);
+          }}
+        />
+        <button className="text-button" type="submit" disabled={!draft.trim()}>
+          Guardar
+        </button>
+        <button
+          className="text-button"
+          type="button"
+          onClick={() => setEditing(false)}
+        >
+          Cancelar
+        </button>
+      </form>
+    );
 
   return (
     <div className="editable-title">
       <span>{title}</span>
-      <button className="text-button" type="button" aria-label={`Editar ${title}`}
-        onClick={() => { setDraft(title); setEditing(true); }}>Editar</button>
+      <button
+        className="text-button"
+        type="button"
+        aria-label={`Editar ${title}`}
+        onClick={() => {
+          setDraft(title);
+          setEditing(true);
+        }}
+      >
+        Editar
+      </button>
     </div>
   );
 }

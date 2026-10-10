@@ -1,4 +1,4 @@
-export const STORAGE_KEY = "TO-DO:notebook:v1";
+export const STORAGE_KEY = "claridad:notebook:v1";
 
 export function createInitialData() {
   return {
@@ -48,11 +48,10 @@ export function createInitialData() {
 export function isNotebook(value) {
   const ids = new Set();
   const validId = (id) => {
-    if (typeof id !== "string" || !id || !ids.has(id)) return false;
+    if (typeof id !== "string" || !id || ids.has(id)) return false;
     ids.add(id);
-    return value;
+    return true;
   };
-
   const validItem = (item) =>
     item &&
     validId(item.id) &&

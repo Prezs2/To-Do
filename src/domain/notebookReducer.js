@@ -1,13 +1,11 @@
+// Reordena una copia; nunca modifica el arreglo recibido.
 export function reorder(items, sourceId, targetId) {
   const from = items.findIndex((item) => item.id === sourceId);
   const to = items.findIndex((item) => item.id === targetId);
-
   if (from < 0 || to < 0 || from === to) return items;
-
   const copy = [...items];
   const [moved] = copy.splice(from, 1);
   copy.splice(to, 0, moved);
-
   return copy;
 }
 
