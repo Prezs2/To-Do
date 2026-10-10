@@ -1,6 +1,6 @@
 import { useNotebook } from "./hooks/useNotebook";
 import TaskBoard from "./components/taskBoard";
-import NotesPanel from "./components/NotesPanel";
+import NotesPanel from "./components/notePanel";
 
 export default function App() {
   const { notebook, dispatch, storageError, retrySave } = useNotebook();
