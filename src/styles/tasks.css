@@ -22,11 +22,9 @@
 }
 .add-form {
   display: flex;
-  flex-wrap: wrap;
   gap: 8px;
 }
 .add-form input {
-  flex: 1 1 12rem;
   font-size: 1rem;
 }
 .order-hint {
@@ -49,7 +47,6 @@
 }
 .editable-title {
   display: flex;
-  flex-wrap: wrap;
   gap: 8px;
   align-items: baseline;
   flex: 1;
@@ -62,12 +59,9 @@
 }
 .task-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 26rem), 1fr));
-  align-items: start;
-  gap: 16px;
+  gap: 12px;
 }
 .task-card {
-  min-width: 0;
   background: var(--paper);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -75,10 +69,10 @@
   box-shadow: 0 3px 12px #253b3303;
 }
 .task-top {
-  display: grid;
-  grid-template-columns: 20px 20px minmax(0, 1fr);
+  display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
+  flex-wrap: wrap;
 }
 .drag-handle {
   color: #8c9b83;
@@ -94,28 +88,13 @@
   text-decoration: line-through;
   color: #74816e;
 }
-.task-toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  margin: 12px 0;
-}
-.task-actions,
-.subtask-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-}
 .task-meta {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
+  gap: 11px;
   color: var(--muted);
   font-size: 0.8125rem;
+  margin: 12px 0 14px 36px;
 }
 .pill {
   display: inline-block;
@@ -149,17 +128,14 @@
   gap: 8px;
 }
 .subtask {
-  display: grid;
-  grid-template-columns: 20px 20px minmax(0, 1fr);
+  display: flex;
   gap: 7px;
   align-items: center;
+  flex-wrap: wrap;
   padding: 8px;
   border-radius: 8px;
   background: #f7f9f4;
   border: 1px solid transparent;
-}
-.subtask-actions {
-  grid-column: 3;
 }
 .subtask .editable-title > span {
   font-weight: 400;
@@ -188,11 +164,25 @@
     gap: 7px;
   }
   .editable-title {
+    flex-basis: calc(100% - 70px);
+    flex-wrap: wrap;
     gap: 2px 8px;
+  }
+  .task-top > .move-controls {
+    margin-left: 37px;
+  }
+  .subtask > .move-controls {
+    margin-left: 34px;
   }
   .icon-button {
     min-width: 34px;
     min-height: 34px;
+  }
+  .task-meta {
+    margin-left: 36px;
+  }
+  .add-form {
+    flex-wrap: wrap;
   }
   .add-form input {
     flex: 1 1 180px;

@@ -41,43 +41,39 @@ export default function TaskCard({
             dispatch({ type: "task/rename", taskId: task.id, title })
           }
         />
+        <MoveControls
+          title={task.title}
+          index={index}
+          items={tasks}
+          onMove={onMove}
+        />
+        <button
+          className="text-button danger"
+          type="button"
+          aria-label={`Eliminar tarea ${task.title}`}
+          onClick={() => {
+            if (
+              window.confirm(`¿Eliminar «${task.title}» y todas sus subtareas?`)
+            )
+              dispatch({ type: "task/delete", taskId: task.id });
+          }}
+        >
+          Eliminar
+        </button>
       </div>
-      <div className="task-toolbar">
-        <div className="task-meta">
-          <span className={`pill ${completed ? "done" : ""}`}>
-            {completed
-              ? "Completada"
-              : task.completed
-                ? "Subtareas pendientes"
-                : "Pendiente"}
+      <div className="task-meta">
+        <span className={`pill ${completed ? "done" : ""}`}>
+          {completed
+            ? "Completada"
+            : task.completed
+              ? "Subtareas pendientes"
+              : "Pendiente"}
+        </span>
+        {task.subtasks.length > 0 && (
+          <span>
+            {done} de {task.subtasks.length} pasos
           </span>
-          {task.subtasks.length > 0 && (
-            <span>
-              {done} de {task.subtasks.length} pasos
-            </span>
-          )}
-        </div>
-        <div className="task-actions">
-          <MoveControls
-            title={task.title}
-            index={index}
-            items={tasks}
-            onMove={onMove}
-          />
-          <button
-            className="text-button danger"
-            type="button"
-            aria-label={`Eliminar tarea ${task.title}`}
-            onClick={() => {
-              if (
-                window.confirm(`¿Eliminar «${task.title}» y todas sus subtareas?`)
-              )
-                dispatch({ type: "task/delete", taskId: task.id });
-            }}
-          >
-            Eliminar
-          </button>
-        </div>
+        )}
       </div>
       <details className="task-details">
         <summary>
