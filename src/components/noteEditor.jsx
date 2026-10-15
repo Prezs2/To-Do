@@ -13,6 +13,7 @@ export default function NoteEditor({ note, onSave, onCancel }) {
       id: note?.id ?? crypto.randomUUID(),
       title: title.trim(),
       body,
+      completed: note?.completed ?? false,
       updatedAt: new Date().toISOString(),
     });
   }

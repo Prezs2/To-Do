@@ -48,27 +48,29 @@ export default function SubtaskList({ task, dispatch }) {
                 })
               }
             />
-            <MoveControls
-              title={subtask.title}
-              index={index}
-              items={task.subtasks}
-              onMove={move}
-            />
-            <button
-              type="button"
-              className="text-button danger"
-              aria-label={`Eliminar subtarea ${subtask.title}`}
-              onClick={() => {
-                if (window.confirm(`¿Eliminar la subtarea «${subtask.title}»?`))
-                  dispatch({
-                    type: "subtask/delete",
-                    taskId: task.id,
-                    subtaskId: subtask.id,
-                  });
-              }}
-            >
-              Eliminar
-            </button>
+            <div className="subtask-actions">
+              <MoveControls
+                title={subtask.title}
+                index={index}
+                items={task.subtasks}
+                onMove={move}
+              />
+              <button
+                type="button"
+                className="text-button danger"
+                aria-label={`Eliminar subtarea ${subtask.title}`}
+                onClick={() => {
+                  if (window.confirm(`¿Eliminar la subtarea «${subtask.title}»?`))
+                    dispatch({
+                      type: "subtask/delete",
+                      taskId: task.id,
+                      subtaskId: subtask.id,
+                    });
+                }}
+              >
+                Eliminar
+              </button>
+            </div>
           </li>
         ))}
       </ul>

@@ -40,6 +40,7 @@ export function createInitialData() {
         title: "Un lugar para mis ideas",
         body: "Las ideas pequeñas también merecen un espacio.\n\nUsa este cuaderno para guardar lo que aprendes, planear tu día o empezar algo nuevo.",
         updatedAt: "2026-10-09T12:00:00.000Z",
+        completed: false,
       },
     ],
   };
@@ -77,6 +78,7 @@ export function isNotebook(value) {
         typeof note.title === "string" &&
         note.title.trim().length > 0 &&
         typeof note.body === "string" &&
+        (note.completed === undefined || typeof note.completed === "boolean") &&
         typeof note.updatedAt === "string" &&
         Number.isFinite(Date.parse(note.updatedAt)),
     ),

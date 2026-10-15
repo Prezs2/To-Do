@@ -1,10 +1,11 @@
 import { useNotebook } from "./hooks/useNotebook";
 import TaskBoard from "./components/taskBoard";
 import NotesPanel from "./components/notePanel";
+import { isTaskCompleted } from "./domain/completion";
 
 export default function App() {
   const { notebook, dispatch, storageError, retrySave } = useNotebook();
-  const completed = notebook.tasks.filter((task) => task.completed).length;
+  const completed = notebook.tasks.filter(isTaskCompleted).length;
   const total = notebook.tasks.length;
   const progress = total ? Math.round((completed / total) * 100) : 0;
 

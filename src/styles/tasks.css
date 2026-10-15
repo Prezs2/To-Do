@@ -5,13 +5,6 @@
 .tasks-section > .section-description {
   margin-bottom: 16px;
 }
-input[type="checkbox"] {
-  width: 19px;
-  height: 19px;
-  flex-shrink: 0;
-  accent-color: var(--green);
-  cursor: pointer;
-}
 .icon-button {
   border: 1px solid #e1e6dc;
   border-radius: 6px;
@@ -19,6 +12,8 @@ input[type="checkbox"] {
   color: var(--green);
   padding: 3px 6px;
   font-size: 14px;
+  min-width: 32px;
+  min-height: 32px;
 }
 .move-controls {
   display: flex;
@@ -27,13 +22,15 @@ input[type="checkbox"] {
 }
 .add-form {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 .add-form input {
-  font-size: 13px;
+  flex: 1 1 12rem;
+  font-size: 1rem;
 }
 .order-hint {
-  font-size: 10px;
+  font-size: 0.8125rem;
   color: var(--muted);
   margin: 10px 0 14px;
 }
@@ -47,11 +44,12 @@ input[type="checkbox"] {
 }
 .inline-editor input {
   flex: 1 1 120px;
-  font-size: 13px;
+  font-size: 1rem;
   padding: 7px;
 }
 .editable-title {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   align-items: baseline;
   flex: 1;
@@ -59,14 +57,17 @@ input[type="checkbox"] {
 }
 .editable-title > span {
   overflow-wrap: anywhere;
-  font-size: 13px;
+  font-size: 1.125rem;
   font-weight: 550;
 }
 .task-list {
   display: grid;
-  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 26rem), 1fr));
+  align-items: start;
+  gap: 16px;
 }
 .task-card {
+  min-width: 0;
   background: var(--paper);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -74,10 +75,10 @@ input[type="checkbox"] {
   box-shadow: 0 3px 12px #253b3303;
 }
 .task-top {
-  display: flex;
+  display: grid;
+  grid-template-columns: 20px 20px minmax(0, 1fr);
   align-items: center;
-  gap: 9px;
-  flex-wrap: wrap;
+  gap: 8px;
 }
 .drag-handle {
   color: #8c9b83;
@@ -93,13 +94,28 @@ input[type="checkbox"] {
   text-decoration: line-through;
   color: #74816e;
 }
+.task-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0;
+}
+.task-actions,
+.subtask-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
 .task-meta {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 11px;
+  gap: 8px;
   color: var(--muted);
-  font-size: 10px;
-  margin: 12px 0 14px 36px;
+  font-size: 0.8125rem;
 }
 .pill {
   display: inline-block;
@@ -118,7 +134,7 @@ input[type="checkbox"] {
 }
 .task-details > summary {
   cursor: pointer;
-  font-size: 11px;
+  font-size: 1rem;
   color: var(--muted);
   padding: 2px 0 4px 5px;
 }
@@ -133,25 +149,28 @@ input[type="checkbox"] {
   gap: 8px;
 }
 .subtask {
-  display: flex;
+  display: grid;
+  grid-template-columns: 20px 20px minmax(0, 1fr);
   gap: 7px;
   align-items: center;
-  flex-wrap: wrap;
   padding: 8px;
   border-radius: 8px;
   background: #f7f9f4;
   border: 1px solid transparent;
 }
+.subtask-actions {
+  grid-column: 3;
+}
 .subtask .editable-title > span {
   font-weight: 400;
-  font-size: 12px;
+  font-size: 1rem;
 }
 .compact {
   margin-top: 13px;
 }
 .compact input {
   padding: 9px 10px;
-  font-size: 11px;
+  font-size: 1rem;
 }
 .tasks-section [data-dragging="true"] {
   opacity: 0.5;
@@ -169,25 +188,11 @@ input[type="checkbox"] {
     gap: 7px;
   }
   .editable-title {
-    flex-basis: calc(100% - 70px);
-    flex-wrap: wrap;
     gap: 2px 8px;
-  }
-  .task-top > .move-controls {
-    margin-left: 37px;
-  }
-  .subtask > .move-controls {
-    margin-left: 34px;
   }
   .icon-button {
     min-width: 34px;
     min-height: 34px;
-  }
-  .task-meta {
-    margin-left: 36px;
-  }
-  .add-form {
-    flex-wrap: wrap;
   }
   .add-form input {
     flex: 1 1 180px;

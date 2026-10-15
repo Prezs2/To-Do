@@ -73,18 +73,30 @@ export function notebookReducer(state, action) {
         subtasks: reorder(task.subtasks, action.sourceId, action.targetId),
       }));
     case "note/add":
-      return { ...state, notes: [action.note, ...state.notes] };
+      return {
+        ...state,
+        notes: [{ completed: false, ...action.note }, ...state.notes],
+      };
     case "note/update":
       return action.note.title.trim()
         ? {
             ...state,
             notes: state.notes.map((note) =>
               note.id === action.note.id
-                ? { ...action.note, title: action.note.title.trim() }
+                ? { ...note, ...action.note, title: action.note.title.trim() }
                 : note,
             ),
           }
         : state;
+    case "note/toggle":
+      return {
+        ...state,
+        notes: state.notes.map((note) =>
+          note.id === action.noteId
+            ? { ...note, completed: !note.completed }
+            : note,
+        ),
+      };
     case "note/delete":
       return {
         ...state,
